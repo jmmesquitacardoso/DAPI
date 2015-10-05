@@ -56,9 +56,8 @@ var writeDir = './featured_articles';
   };
 
   function writeToFile (fd, data, callback) {
-    fs.writeSync(fd, data['user']);
-    fs.writeSync(fd, '\n');
-    fs.writeSync(fd, data['*']);
+    var jsonToBeWritten = {user: data['user'], timestamp: data['timestamp'], content: data['*']};
+    fs.writeSync(fd, jsonToBeWritten);
     fs.closeSync(fd);
     callback();
   }
